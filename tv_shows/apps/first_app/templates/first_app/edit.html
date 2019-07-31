@@ -1,0 +1,12 @@
+<h1>Edit Show {{show.id}}</h1>
+
+<form action="/shows/{{show.id}}/update" method="post">
+    {% csrf_token %}
+    Title<br> <input type="text" name="title" value="{{show.title}}"><br><br>
+    Network <input type="text" name="network" value="{{show.network}}">
+    Release Date <input type="date" name="release_date" value={{show.release_date}}> <br>
+    Description <input type="text" name="description" value="{{show.description}}">
+    <input type="submit" Value="Update">
+</form>
+
+<a href = "/shows/{{show.id}}">Go to Show</a>

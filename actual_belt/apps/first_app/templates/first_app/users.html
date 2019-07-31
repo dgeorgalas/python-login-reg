@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/CSS/users.css' %}">
+</head>
+<body>
+    <p>Posts by {{user.name}}</p>
+    <p>Count: {{count}}
+    </p>
+    
+    {% for quote in user_quotes %}
+        <h4><spam>{{quote.quoted_by}}:</spam> {{quote.message}}</h4>
+    {% endfor %}
+
+    <a href="/quotes">Dashboard</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/CSS/wall.css' %}">
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <div class="register">
+        <from action="/register" method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="name" placeholder="name">
+        Alias: <input type="text" name="alias" placeholder="alias">
+        Alias: <input type="text" name="alias" placeholder="alias">
+        Alias: <input type="text" name="alias" placeholder="alias">
+        Alias: <input type="text" name="alias" placeholder="alias">
+        Alias: <input type="text" name="alias" placeholder="alias">
+        </from>
+    </div>
+</body>
+</html>

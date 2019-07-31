@@ -1,0 +1,12 @@
+<h1>Add a New Show</h1>
+
+<form action="/shows/create" method="post">
+    {% csrf_token %}
+    Title<br> <input type="text" name="title"><br><br>
+    Network <input type="text" name="network">
+    Release Date <input type="date" name="release_date"> <br>
+    Description <input type="text" name="description">
+    <input type="submit" Value="create">
+</form>
+
+<a href = "/shows">Go Back</a>

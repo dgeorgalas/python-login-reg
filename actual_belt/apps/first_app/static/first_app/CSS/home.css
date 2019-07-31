@@ -1,0 +1,10 @@
+.register{
+    border: 5px solid black;
+    display: inline-block;
+}
+
+.login{
+    border: 5px solid black;
+    display: inline-block;
+    margin-left:70px;
+}

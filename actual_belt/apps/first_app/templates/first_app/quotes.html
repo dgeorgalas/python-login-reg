@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'first_app/CSS/quotes.css' %}">
+</head>
+<body>
+    <h1>Welcome, {{user.name}}</h1>
+    <h3>Quotable Quotes</h3>
+    <div class="quotes">
+        {% if non_favs %}
+            {% for non_fav in non_favs %}
+                <div class="quote">
+                    <h5>{{non_fav.quoted_by}}: {{non_fav.message}}</h5>
+                    <p>Posted by <a href=/users/{{non_fav.user.id}}>{{non_fav.user.name}}</a></p>
+                    <form action="add_to_favorites/{{non_fav.id}}" method="post">
+                    {% csrf_token %}
+                        <input type="submit" value="Add to My List">
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    <h3>Your Favorites</h3>
+    <div class="favorites">
+        {% if favorites %}
+            {% for favorite in favorites %}
+                <div class="favorite">
+                    <h5>{{favorite.quoted_by}}: {{favorite.message}}</h5>
+                    <form action="remove/{{favorite.id}}" method="post">
+                    {% csrf_token %}
+                        <input type="submit" value="Remove from My List">
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="contribute">
+        <h4>Contribute a Quote:</h4>
+        <form action="/contribute" method="post">
+        {% csrf_token %}
+            Quoted By: <input type="text" name="quoted_by"><br><br>
+            Message: <input type="text" name="message">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <a href="/logout">Logout</a>
+</body>
+</html>
